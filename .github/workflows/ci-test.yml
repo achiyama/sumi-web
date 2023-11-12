@@ -16,6 +16,7 @@ jobs:
         run: |
           echo "inspecting source code"
           ls -la
+          pwd
       - name: Run tests
         run: |
           echo "Running tests"
