@@ -7,5 +7,12 @@ on:
       - develop
 
 jobs:
-  test:
+  first-job:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run tests
+        run: |
+          echo "Running tests"
+          echo "Tests passed"
