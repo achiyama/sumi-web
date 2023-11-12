@@ -10,8 +10,12 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout source code
         uses: actions/checkout@v4
+      - name: 'inspect source code'
+        run: |
+          echo "inspecting source code"
+          ls -la
       - name: Run tests
         run: |
           echo "Running tests"
