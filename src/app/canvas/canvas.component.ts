@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { fabric } from 'fabric';
 
@@ -10,22 +10,18 @@ import { fabric } from 'fabric';
   styleUrl: './canvas.component.scss',
 })
 export class CanvasComponent implements AfterViewInit {
-  canvas?: fabric.Canvas;
+  @ViewChild('canvas') canvas!: ElementRef<HTMLCanvasElement>;
+  fabricCanvas?: fabric.Canvas;
 
   constructor() {}
 
   ngAfterViewInit(): void {
-    this.canvas = new fabric.Canvas('canvas');
+    this.fabricCanvas = new fabric.Canvas(this.canvas.nativeElement);
 
-    const text = new fabric.Textbox('Hello World', {
-      width: 200,
-      height: 100,
-      fontSize: 24,
-      cursorColor: 'blue',
-      left: 50,
-      top: 50,
+    const text = new fabric.Rect({
+      backgroundColor: 'red',
     });
 
-    this.canvas.add(text);
+    this.fabricCanvas.add(text);
   }
 }
